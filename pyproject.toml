@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "world-news"
+version = "0.1.0"
+description = "MCP server and FastAPI app integrating GDELT with Gemini 2.5 Flash"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { file = "LICENSE" }
+authors = [{ name = "Sina Fathpour" }]
+dependencies = [
+  "mcp>=1.2.0",
+  "gdeltdoc>=0.4.0",
+  "google-generativeai>=0.7.0",
+  "python-dotenv>=1.0.1",
+  "PyYAML>=6.0",
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.30.0",
+  "pydantic>=2.8.0",
+  "httpx>=0.27.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "ruff>=0.5.5",
+  "mypy>=1.10.0",
+  "pytest>=8.2.0",
+  "pytest-asyncio>=0.23.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+  "E", "F", "I", "UP", "B", "N",
+]
+
+
